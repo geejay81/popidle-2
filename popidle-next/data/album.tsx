@@ -35,9 +35,6 @@ export async function getHistoricAlbums() {
     return createClient(clientConfig).fetch(
         groq`*[_type == "album" && defined(gameId) && gameId < ${currentPuzzleDate}]{
             _id,
-            _createdAt,
-            artist,
-            albumTitle,
             gameId
         } | order(gameId)`,
         {},
