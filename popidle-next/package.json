@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
     "@mui/base": "^5.0.0-beta.39",
+    "@mui/material": "^5.15.13",
     "accessible-autocomplete": "^2.0.4",
     "next": "14.1.0",
     "next-sanity": "^8.0.2",
