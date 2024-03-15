@@ -7,6 +7,11 @@ export async function GET(request: Request) {
 
     // TODO: handle errors here.
 
-    const autocompleteOptions = albums.map((album: any) => `${album.albumTitle} - ${album.artist}`)
+    const autocompleteOptions = albums.map((album: any) => (
+        {
+            id: `${album._id}`,
+            value: `${album.albumTitle} - ${album.artist}`
+        }
+    ));
     return NextResponse.json({ albums: autocompleteOptions })
 }

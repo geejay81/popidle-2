@@ -8,6 +8,10 @@ const currentPuzzleId = () => {
     return Math.floor((today.getTime() - startDate.getTime()) / _MS_PER_DAY) + 1;
 }
 
+const filteredResponseQueryOptions = {
+    next: { revalidate: Number(process.env.REVALIDATE_CACHE_SECONDS) }
+}
+
 export async function getAlbum(gameId: Number) {
 
     const currentPuzzleDate = currentPuzzleId();
@@ -22,9 +26,7 @@ export async function getAlbum(gameId: Number) {
             "coverArt": coverArt.asset->url
         }`,
         { },
-        {
-            next: { revalidate: Number(process.env.REVALIDATE_CACHE_SECONDS) }
-        }
+        filteredResponseQueryOptions
     );
 }
 
@@ -38,9 +40,7 @@ export async function getHistoricAlbums() {
             gameId
         } | order(gameId)`,
         {},
-        {
-            next: { revalidate: Number(process.env.REVALIDATE_CACHE_SECONDS) }
-        }
+        filteredResponseQueryOptions
     );
 }
 
@@ -55,8 +55,6 @@ export async function getAllAlbums() {
             gameId
         } | order(albumTitle)`,
         {},
-        {
-            next: { revalidate: Number(process.env.REVALIDATE_CACHE_SECONDS) }
-        }
+        filteredResponseQueryOptions
     );
 }
