@@ -1,6 +1,7 @@
 "use client";
 
 import { getAllAlbums } from '@/data/album';
+import { Autocomplete, TextField } from '@mui/material';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
@@ -27,7 +28,7 @@ export default function Puzzle(props: Props) {
     const defaultGuessList: Guess[] = [];
 
     const [guesses, setGuesses] = useState(defaultGuessList);
-    const [guessed, setGuessed] = useState('');
+    const [guessed, setGuessed] = useState<string>('');
     const [autocompleteOptions, setAutocompleteOptions] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -35,7 +36,7 @@ export default function Puzzle(props: Props) {
         fetch('/api/albums')
             .then((res) => res.json())
             .then((data) => {
-                setAutocompleteOptions(data);
+                setAutocompleteOptions(data.albums.map((item:any) => ({ label: item.value, id: item.id })));
                 setIsLoading(false);
             })
     }, []);
@@ -59,14 +60,26 @@ export default function Puzzle(props: Props) {
                 : (
                     <>
                         <div>
-                            <h1>{`Puzzle ${album.gameId.toString()}`}</h1>
+                            <h1>{`Puzzle ${album.gameId.toString()}`} {`(${autocompleteOptions.length})`}</h1>
                             <Image src={album.coverArt} alt={album.albumTitle} width={300} height={300} />
-                            <input
-                                className='text-black'
-                                type="text"
-                                value={guessed}
-                                onChange={(e) => setGuessed(e.target.value)}
+                            <button
+                                type="button" onClick={handleGuess}>Guess</button>
+                        </div>
+                        <div>
+                            <Autocomplete 
+                                id="guess-input"
+                                disablePortal
+                                options={!autocompleteOptions ? [{label:"Loading...", id:0}] : autocompleteOptions }
+                                onChange={(e, value) => setGuessed(value?.label ?? '')}
+                                renderInput={(params) => <TextField {...params} label="Album" />}
+                                renderOption={(props, option, { selected }) => (
+                                    <li {...props} key={option.id}>
+                                      <span>{option.label}</span>
+                                    </li>
+                                  )}
                             />
+                        </div>
+                        <div>
                             <button
                                 type="button" onClick={handleGuess}>Guess</button>
                         </div>
