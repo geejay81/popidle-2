@@ -1,6 +1,5 @@
 "use client";
 
-import { getAllAlbums } from '@/data/album';
 import { Autocomplete, TextField } from '@mui/material';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
@@ -70,7 +69,7 @@ export default function Puzzle(props: Props) {
                                 id="guess-input"
                                 disablePortal
                                 options={!autocompleteOptions ? [{label:"Loading...", id:0}] : autocompleteOptions }
-                                onChange={(e, value) => setGuessed(value?.label ?? '')}
+                                onChange={(e, value) => setGuessed(`${value?.label}`)}
                                 renderInput={(params) => <TextField {...params} label="Album" />}
                                 renderOption={(props, option, { selected }) => (
                                     <li {...props} key={option.id}>
