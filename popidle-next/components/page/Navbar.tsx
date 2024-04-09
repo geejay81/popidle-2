@@ -1,15 +1,51 @@
+import logo from "@/ui/fonts/logo";
 import Link from "next/link";
+import { FaRecordVinyl, FaHome, FaPuzzlePiece, FaCalendar } from 'react-icons/fa';
+ 
+const navLinks = [
+    {
+        "title": "Home",
+        "url": "/",
+        "icon": <FaHome className="inline" />
+    },
+    {
+        "title": "Today's Album",
+        "url": "/guess-the-album",
+        "icon": <FaPuzzlePiece className="inline" />
+    },
+    {
+        "title": "History",
+        "url": "/album-history",
+        "icon": <FaCalendar className="inline" />
+    }
+]
 
 export default function Navbar() {
     return (
-        <nav className="flex items-center justify-between">
-            <div className="logo">PopIdle</div>
-            <ul className="flex items-stretch justify-between">
-                <li><Link href="/">Home</Link></li>
-                <li><Link href="/guess-the-album">Today&apos;s puzzle</Link></li>
-                <li><Link href="/album-history">Previous puzzles</Link></li>
-            </ul>
-        </nav>
-        
+        <header className="bg-slate-700 text-white">
+            <nav className="container mx-auto max-w-l flex items-center justify-between p-4">
+                <div className="text-2xl md:text-3xl">
+                    <Link href="/" className={`${logo.className} space-x-1`}>
+                        <FaRecordVinyl className="inline" />
+                        <span>PopIdle</span>
+                    </Link>
+                </div>
+                <div className="space-x-5">
+                    {navLinks &&
+                        navLinks
+                            .map((link: any) => (
+                            <Link 
+                                key={link.url} 
+                                href={link.url} 
+                                className="space-x-2"
+                                title={link.title}>
+                                {link.icon}
+                                <span className="sr-only md:not-sr-only">{link.title}</span>
+                            </Link>
+                        ))
+                    }
+                </div> 
+            </nav>
+        </header>
     )
 }

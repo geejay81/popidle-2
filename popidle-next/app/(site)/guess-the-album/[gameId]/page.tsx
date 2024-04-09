@@ -1,4 +1,5 @@
 import Puzzle from "@/components/client-apps/puzzle";
+import Header from "@/components/page/Header";
 import { getAlbum } from "@/data/album";
 import { notFound } from "next/navigation";
 
@@ -15,6 +16,9 @@ export default async function Page({ params }: Props) {
     }
 
     return (
-        <Puzzle album={album} />
+        <>
+            <Header title="Guess the album" subtitle="" />
+            <Puzzle album={album} />
+        </>
     )
 }
