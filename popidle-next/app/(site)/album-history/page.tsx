@@ -14,15 +14,15 @@ export default async function Page() {
     return (
         <>
             <Header title={metadata.title!.toString()} subtitle={metadata.description!.toString()} />
-            <main>
-                <div className="container mx-auto max-w-5xl px-4 py-8 space-y-3">
+            <main className="grow">
+                <div className="container mx-auto max-w-5xl px-4 py-4 space-y-3">
                     <ul className="list-none m-0">
                     {albums && albums.map((album: any) => (
                         <li key={album._id} 
-                            className="mr-4 my-5 float-left">
+                            className="mr-4 my-4 float-left">
                             <Link 
                                 href={`/guess-the-album/${album.gameId}`}
-                                className="bg-blue-700 text-white px-5 py-4 rounded-lg"
+                                className="bg-blue-700 text-white px-5 py-4 rounded-lg inline-block"
                                 >{album.gameId}</Link></li>
                     ))}
                     </ul>
