@@ -62,12 +62,12 @@ export default function Puzzle(props: Props) {
             {isLoading
                 ? (<p>Loading ...</p>)
                 : (
-                    <div className='flex md:flex-row md:justify-between md:gap-4'>
-                        <div className='flex-1 p-4'>
+                    <div className='flex flex-col md:flex-row md:justify-between md:gap-4'>
+                        <div className='md:flex-1 p-4'>
                             <PixelatedImage imageUrl={album.coverArt} pixelSize={pixelSize} />
                             {/* <Image src={album.coverArt} alt={album.albumTitle} width={300} height={300} /> */}
                         </div>
-                        <div className='flex-1 p-4'>
+                        <div className='md:flex-1 p-4'>
                             <div>
                                 <Autocomplete 
                                     id="guess-input"
