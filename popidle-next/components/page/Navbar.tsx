@@ -27,7 +27,7 @@ export default function Navbar() {
                 <div className="text-2xl md:text-3xl">
                     <Link href="/" className={`${logo.className} space-x-1`}>
                         <FaRecordVinyl className="inline" />
-                        <span>PopIdle</span>
+                        <span>PopIdle80s</span>
                     </Link>
                 </div>
                 <div className="space-x-5">

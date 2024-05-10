@@ -7,7 +7,7 @@ type Props = {
 
 export default function Header({title, subtitle }: Props) {
     return (
-        <section className="bg-popidle-yellow text-slate-700">
+        <section className="bg-fuchsia-500 text-white">
             <div className="container mx-auto max-w-5xl px-4 py-8 space-y-3">
                 <h1 className={`text-3xl font-bold md:text-4xl ${headingFont.className}`}>{title}</h1>
                 {subtitle && 

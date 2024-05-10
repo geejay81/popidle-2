@@ -16,9 +16,12 @@ export default async function Page({ params }: Props) {
     }
 
     return (
-        <main className="grow">
-            <Header title="Guess the album" subtitle="" />
-            <Puzzle album={album} />
-        </main>
+        <>
+            <Header title="Guess the 80's album" subtitle="" />
+            <main className="container mx-auto max-w-5xl">
+                <Puzzle album={album} />
+            </main>
+        </>
+        
     )
 }
