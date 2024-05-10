@@ -1,8 +1,8 @@
 "use client";
 
 import { Autocomplete, TextField } from '@mui/material';
-import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
+import PixelatedImage from './PixelatedImage';
 
 type Album = {
     gameId: Number;
@@ -25,6 +25,8 @@ export default function Puzzle(props: Props) {
     const album = props.album;
     const levels = [40, 24, 16, 8, 4, 2];
     const defaultGuessList: Guess[] = [];
+    const [level, setLevel] = useState(0);
+    const [pixelSize, setPixelSize] = useState(40);
 
     const [guesses, setGuesses] = useState(defaultGuessList);
     const [guessed, setGuessed] = useState<string>('');
@@ -42,25 +44,28 @@ export default function Puzzle(props: Props) {
 
     const handleGuess = () => {
 
-        let guessResult = '';
+        setLevel(level + 1);
+        setPixelSize(levels[level]);
 
-        if (!guessed || guessed.length == 0) guessResult = 'skipped';
-        else if (guessed === album.albumTitle) guessResult = 'correct';
-        else guessResult = 'incorrect';
+        // let guessResult = '';
 
-        setGuesses([...guesses, { result: guessResult, answer: guessed }]);
+        // if (!guessed || guessed.length == 0) guessResult = 'skipped';
+        // else if (guessed === album.albumTitle) guessResult = 'correct';
+        // else guessResult = 'incorrect';
+
+        // setGuesses([...guesses, { result: guessResult, answer: guessed }]);
     }
 
     return (
 
         <React.Fragment>
             {isLoading
-                ? (<h1>Loading ...</h1>)
+                ? (<p>Loading ...</p>)
                 : (
                     <>
                         <div>
-                            <h1>{`Puzzle ${album.gameId.toString()}`} {`(${autocompleteOptions.length})`}</h1>
-                            <Image src={album.coverArt} alt={album.albumTitle} width={300} height={300} />
+                            <PixelatedImage imageUrl={album.coverArt} pixelSize={pixelSize} />
+                            {/* <Image src={album.coverArt} alt={album.albumTitle} width={300} height={300} /> */}
                             <button
                                 type="button" onClick={handleGuess}>Guess</button>
                         </div>
@@ -80,6 +85,7 @@ export default function Puzzle(props: Props) {
                         </div>
                         <div>
                             <button
+                                className='border border-black bg-green-500 text-black p-4 rounded-md'
                                 type="button" onClick={handleGuess}>Guess</button>
                         </div>
                         <div>
@@ -93,6 +99,5 @@ export default function Puzzle(props: Props) {
                 )}
 
         </React.Fragment>
-
     )
 }
