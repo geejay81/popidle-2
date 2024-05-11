@@ -47,12 +47,13 @@ export async function getHistoricAlbums() {
 export async function getAllAlbums() {
 
     return createClient(clientConfig).fetch(
-        groq`*[_type == "album"]{
+        groq`*[_type == "album" && year >= 1980 && year <= 1989]{
             _id,
             _createdAt,
             artist,
             albumTitle,
-            gameId
+            "gameId": gameId,
+            year
         } | order(albumTitle)`,
         {},
         filteredResponseQueryOptions
