@@ -1,4 +1,4 @@
-import Puzzle from "@/components/client-apps/PuzzleGame";
+import Puzzle from "@/components/client-apps/Puzzle";
 import Header from "@/components/page/Header";
 import { getAlbum } from "@/data/album";
 import { notFound } from "next/navigation";
