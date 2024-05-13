@@ -42,30 +42,32 @@ export default function Puzzle(props: Props) {
             })
     }, []);
 
-    const handleGuess = () => {
+    const handleGuess = (e: React.MouseEvent<HTMLElement>) => {
+        e.persist();
 
-        setLevel(level + 1);
-        setPixelSize(levels[level]);
+        let guessResult = '';
 
-        // let guessResult = '';
+        if (!guessed || guessed.length == 0) guessResult = 'skipped';
+        else if (guessed === album.albumTitle) guessResult = 'correct';
+        else guessResult = 'incorrect';
 
-        // if (!guessed || guessed.length == 0) guessResult = 'skipped';
-        // else if (guessed === album.albumTitle) guessResult = 'correct';
-        // else guessResult = 'incorrect';
+        setGuesses([...guesses, { result: guessResult, answer: guessed }]);
 
-        // setGuesses([...guesses, { result: guessResult, answer: guessed }]);
+        if (level == (levels.length) - 1) return;
+
+        const newLevel = level + 1;
+        setLevel(newLevel);
+        setPixelSize(levels[newLevel]);
     }
 
     return (
-
-        <React.Fragment>
+        <>
             {isLoading
                 ? (<p>Loading ...</p>)
                 : (
                     <div className='flex flex-col md:flex-row md:justify-between md:gap-4'>
-                        <div className='md:flex-1 p-4'>
-                            <PixelatedImage imageUrl={album.coverArt} pixelSize={pixelSize} />
-                            {/* <Image src={album.coverArt} alt={album.albumTitle} width={300} height={300} /> */}
+                        <div className='md:flex-1 p-4 text-center'>
+                            <PixelatedImage imageUrl={album.coverArt} pixelSize={pixelSize} height={300} width={300} />
                         </div>
                         <div className='md:flex-1 p-4'>
                             <div>
@@ -74,10 +76,10 @@ export default function Puzzle(props: Props) {
                                     disablePortal
                                     options={!autocompleteOptions ? [{label:"Loading...", id:0}] : autocompleteOptions }
                                     onChange={(e, value) => setGuessed(`${value?.label}`)}
-                                    renderInput={(params) => <TextField {...params} label="Album" />}
+                                    renderInput={(params) => <TextField {...params} label="Guess the album" />}
                                     renderOption={(props, option, { selected }) => (
                                         <li {...props} key={option.id}>
-                                        <span>{option.label}</span>
+                                            <span>{option.label}</span>
                                         </li>
                                     )}
                                 />
@@ -97,7 +99,6 @@ export default function Puzzle(props: Props) {
                         </div>
                     </div>
                 )}
-
-        </React.Fragment>
+        </>
     )
 }
