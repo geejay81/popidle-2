@@ -21,13 +21,14 @@ type ComboBoxProps = {
 }
 
 function ComboBox({selectedItem, setSelectedItem, srcUrl}: ComboBoxProps) {
+  const [options, setOptions] = useState<string[]>([]);
   const [items, setItems] = useState<string[]>([]);
 
   useEffect(() => {
     fetch(srcUrl)
         .then((res) => res.json())
         .then((data) => {
-          setItems(data.albums.map((album: any) => album.value));
+          setOptions(data.albums.map((album: any) => album.value));
         })
   },[srcUrl]);
 
@@ -41,7 +42,7 @@ function ComboBox({selectedItem, setSelectedItem, srcUrl}: ComboBoxProps) {
     getItemProps,
   } = useCombobox({
     onInputValueChange({inputValue}) {
-      setItems(items.filter(getOptionFilter(inputValue)))
+      setItems(options.filter(getOptionFilter(inputValue)))
     },
     items,
     itemToString(item) {
@@ -84,12 +85,7 @@ function ComboBox({selectedItem, setSelectedItem, srcUrl}: ComboBoxProps) {
           {isOpen &&
             items.map((item: any, index) => (
               <li className={
-                `py-2 px-3 shadow-sm flex flex-col${highlightedIndex === index ? ' bg-blue-300' : ''}`}
-                // className={cx(
-                //   highlightedIndex === index && 'bg-blue-300',
-                //   selectedItem === item && 'font-bold',
-                //   'py-2 px-3 shadow-sm flex flex-col',
-                // )}
+                `py-2 px-3 shadow-sm flex flex-col${highlightedIndex === index ? ' bg-slate-200' : ''}`}
                 key={index}
                 {...getItemProps({item, index})}
               >
