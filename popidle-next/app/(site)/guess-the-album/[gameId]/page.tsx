@@ -18,7 +18,6 @@ export default async function Page({ params }: Props) {
 
     return (
         <>
-            <Script src="/scripts/autocomplete.js" />
             <Header title="Guess the 80's album" subtitle="" />
             <main className="container mx-auto max-w-5xl">
                 <Puzzle album={album} />

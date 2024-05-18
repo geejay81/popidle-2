@@ -1,1 +1,0 @@
-export declare function autocomplete(inp: any, arr: any): void;

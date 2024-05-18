@@ -23,6 +23,7 @@ export async function getAlbum(gameId: Number) {
             artist,
             albumTitle,
             gameId,
+            embedKey,
             "coverArt": coverArt.asset->url
         }`,
         { },
