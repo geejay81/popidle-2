@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { FaInstagram, FaSpotify, FaTwitter } from "react-icons/fa";
+import { FaInstagram, FaSpotify } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 const footerLinks = [
     {
-        "title": "Twitter",
-        "url": "https://twitter.com/popidlegame",
-        "icon": <FaTwitter />
+        "title": "X",
+        "url": "https://x.com/popidlegame",
+        "icon": <FaXTwitter />
     },
     {
         "title": "Instagram",
@@ -30,9 +31,9 @@ export default function Footer() {
                         </Link>
                     ))}
                 </div>
-                <div className="inline-flex flex-row items-center space-x-4">
+                {/* <div className="inline-flex flex-row items-center space-x-4">
                     <Link href="/privacy-and-cookies">Privacy and cookies</Link>
-                </div>
+                </div> */}
             </div>
         </footer>
     )
