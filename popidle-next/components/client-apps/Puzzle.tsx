@@ -62,7 +62,7 @@ export default function Puzzle(props: Props) {
                     </div>
                     <div>
                         <button
-                            className={`bg-popidle-banner-bg text-xl text-popidle-banner-fg p-4 rounded-md w-full ${headings.className}`}
+                            className={`bg-popidle-banner-bg text-xl !text-popidle-banner-fg p-4 rounded-md w-full ${headings.className}`}
                             type="button" onClick={handleGuess}>Guess</button>
                     </div>
                     <div>

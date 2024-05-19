@@ -12,7 +12,7 @@ export default async function Home() {
           <FaRecordVinyl className="inline" />
           <span>{gameConfig.gameTitle}</span>
         </h1>
-        <Link href="/guess-the-album" className="text-lg bg-popidle-banner-text text-popidle-banner-bg text-slate-100 p-4 rounded-lg">
+        <Link href="/guess-the-album" className="text-lg bg-popidle-banner-text text-popidle-banner-bg p-4 rounded-lg">
           Guess Today&apos;s album</Link>
       </div>
       
