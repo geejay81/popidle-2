@@ -12,11 +12,15 @@ export const metadata: Metadata = {
 export default async function Page() {
 
     const albums = await getHistoricAlbums();
+
+    const showHistory = albums && albums.legnth > 0;
     return (
         <>
             <Header title={metadata.title!.toString()} subtitle={metadata.description!.toString()} />
             <main className="grow">
                 <div className="container mx-auto max-w-5xl px-4 py-4 space-y-2">
+            {showHistory
+                ?
                     <ul className="list-none m-0">
                     {albums && albums.map((album: Album) => (
                         <li key={album._id} 
@@ -27,6 +31,9 @@ export default async function Page() {
                                 >{album.gameId}</Link></li>
                     ))}
                     </ul>
+                :
+                    <p>There are no games to play at the moment, but check back tomorrow to play the first.</p>
+            }
                 </div>
             </main>
         </>

@@ -62,7 +62,7 @@ export async function getAllAlbums() {
             _id,
             artist,
             albumTitle,
-            "gameId": gameId,
+            "gameId": ${gameConfig.gameDatabaseRecordId},
             year,
             embedKey,
             "coverArt": coverArt.asset->url

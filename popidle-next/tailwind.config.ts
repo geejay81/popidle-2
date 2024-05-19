@@ -10,7 +10,6 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'popidle-yellow': gameConfig.colourBannerBackground,
         'popidle-banner-bg': gameConfig.colourBannerBackground,
         'popidle-banner-text': gameConfig.colourBannerForeground
       }
