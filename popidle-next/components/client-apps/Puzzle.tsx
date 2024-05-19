@@ -8,6 +8,7 @@ import SpotifyWidget from './SpotifyWidget';
 import { Guess } from '@/types/Guess';
 import ScoreBoard from './ScoreBoard';
 import { Album } from '@/types/Album';
+import headings from '@/ui/fonts/headings';
 
 type Props = {
     album: Album;
@@ -61,7 +62,7 @@ export default function Puzzle(props: Props) {
                     </div>
                     <div>
                         <button
-                            className='border border-black bg-green-500 text-black p-4 rounded-md w-full'
+                            className={`bg-popidle-banner-bg text-xl text-popidle-banner-fg p-4 rounded-md w-full ${headings.className}`}
                             type="button" onClick={handleGuess}>Guess</button>
                     </div>
                     <div>
