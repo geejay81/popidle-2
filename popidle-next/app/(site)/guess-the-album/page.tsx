@@ -1,7 +1,29 @@
-export default function Page() {
+import Puzzle from "@/components/client-apps/Puzzle"
+import Header from "@/components/page/Header"
+import { getCurrentAlbum } from "@/data/album"
+import gameConfig from "@/data/config/game-config"
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+export const metadata: Metadata = {
+    title: "Guess the album",
+    description: "Can you guess the album from the pixelated image of the cover art?"
+}
+
+export default async function Page() {
+
+    const album = await getCurrentAlbum();
+
+    if (!album) {
+        return notFound();
+    }
+
     return (
-        <main className="grow">
-            
-        </main>
+        <>
+            <Header title={gameConfig.puzzleTitle ?? 'Guess the album'} subtitle="" />
+            <main className="container mx-auto max-w-5xl">
+                <Puzzle album={album} />
+            </main>
+        </>
     )
 }

@@ -31,9 +31,6 @@ export default function Footer() {
                         </Link>
                     ))}
                 </div>
-                {/* <div className="inline-flex flex-row items-center space-x-4">
-                    <Link href="/privacy-and-cookies">Privacy and cookies</Link>
-                </div> */}
             </div>
         </footer>
     )

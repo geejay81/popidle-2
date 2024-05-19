@@ -16,11 +16,11 @@ export default async function Page() {
         <>
             <Header title={metadata.title!.toString()} subtitle={metadata.description!.toString()} />
             <main className="grow">
-                <div className="container mx-auto max-w-5xl px-4 py-4 space-y-3">
+                <div className="container mx-auto max-w-5xl px-4 py-4 space-y-2">
                     <ul className="list-none m-0">
                     {albums && albums.map((album: Album) => (
                         <li key={album._id} 
-                            className="mr-4 my-4 float-left">
+                            className="mr-4 my-2 float-left">
                             <Link 
                                 href={`/guess-the-album/${album.gameId}`}
                                 className="bg-blue-700 text-white px-5 py-4 rounded-lg inline-block"

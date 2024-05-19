@@ -24,6 +24,12 @@ const filteredResponseQueryOptions = {
     next: { revalidate: Number(process.env.REVALIDATE_CACHE_SECONDS) }
 }
 
+export async function getCurrentAlbum() {
+    const currentPuzzleDate = currentPuzzleId();
+
+    return await getAlbum(currentPuzzleDate);
+}
+
 export async function getAlbum(gameId: number) {
 
     const currentPuzzleDate = currentPuzzleId();
