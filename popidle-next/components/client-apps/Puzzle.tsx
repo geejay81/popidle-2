@@ -5,6 +5,8 @@ import PixelatedImage from './PixelatedImage';
 import headingFont from '@/ui/fonts/headings';
 import Combobox from './Combobox';
 import SpotifyWidget from './SpotifyWidget';
+import { Guess } from '@/types/Guess';
+import ScoreBoard from './ScoreBoard';
 
 type Album = {
     gameId: Number;
@@ -16,11 +18,6 @@ type Album = {
 
 type Props = {
     album: Album;
-}
-
-type Guess = {
-    result: string;
-    answer: string;
 }
 
 export default function Puzzle(props: Props) {
@@ -38,6 +35,7 @@ export default function Puzzle(props: Props) {
         e.persist();
 
         const guessed = selectedItem ?? '';
+        setSelectedItem('');
         
         let guessResult = '';
 
@@ -73,6 +71,9 @@ export default function Puzzle(props: Props) {
                             className='border border-black bg-green-500 text-black p-4 rounded-md w-full'
                             type="button" onClick={handleGuess}>Guess</button>
                     </div>
+                    <div>
+                        <ScoreBoard guesses={guesses} />
+                    </div>
                     <div className='prose'>
                         <ol className='list-decimal list-inside'>
                             {guesses.map((g, index) => {
@@ -97,6 +98,7 @@ export default function Puzzle(props: Props) {
                     <div className='p-6 rounded-lg bg-green-500 text-white space-y-4'>
                         <h2 className={`text-2xl font-bold ${headingFont.className}`}>Top of the Pops!</h2>
                         <p>You knew that the answer was <span className='font-bold'>{album.albumTitle}</span> by <span className='font-bold'>{album.artist}</span>.</p>
+                        <ScoreBoard guesses={guesses} />
                     </div>
                 </div>
                 <div className='md:flex-1 p-4 space-y-4'>
@@ -114,6 +116,7 @@ export default function Puzzle(props: Props) {
                     <div className='p-6 bg-red-500 rounded-lg text-white space-y-4'>
                         <h2 className={`text-2xl font-bold ${headingFont.className}`}>Better luck next time!</h2>
                         <p>The answer was <span className='font-bold'>{album.albumTitle}</span> by <span className='font-bold'>{album.artist}</span>.</p>
+                        <ScoreBoard guesses={guesses} />
                     </div>
                 </div>
                 <div className='md:flex-1 p-4 space-y-4'>
