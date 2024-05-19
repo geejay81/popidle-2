@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import colors from "tailwindcss/colors";
+import gameConfig from "./data/config/game-config";
 
 const config: Config = {
   content: [
@@ -10,7 +10,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'popidle-yellow': '#eef510'
+        'popidle-yellow': gameConfig.colourBannerBackground,
+        'popidle-banner-bg': gameConfig.colourBannerBackground,
+        'popidle-banner-text': gameConfig.colourBannerForeground
       }
     }
   },

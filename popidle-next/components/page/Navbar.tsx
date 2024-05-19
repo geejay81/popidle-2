@@ -1,6 +1,7 @@
 import logo from "@/ui/fonts/logo";
 import Link from "next/link";
 import { FaRecordVinyl, FaHome, FaPuzzlePiece, FaCalendar } from 'react-icons/fa';
+import gameConfig from "@/data/config/game-config";
  
 const navLinks = [
     {
@@ -27,7 +28,7 @@ export default function Navbar() {
                 <div className="text-2xl md:text-3xl">
                     <Link href="/" className={`${logo.className} space-x-1`}>
                         <FaRecordVinyl className="inline" />
-                        <span>PopIdle80s</span>
+                        <span>{gameConfig.gameTitle}</span>
                     </Link>
                 </div>
                 <div className="space-x-5">

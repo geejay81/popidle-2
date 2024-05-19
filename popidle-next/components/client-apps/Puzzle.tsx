@@ -7,14 +7,7 @@ import Combobox from './Combobox';
 import SpotifyWidget from './SpotifyWidget';
 import { Guess } from '@/types/Guess';
 import ScoreBoard from './ScoreBoard';
-
-type Album = {
-    gameId: Number;
-    albumTitle: string;
-    artist: string;
-    coverArt: string;
-    embedKey: string;
-}
+import { Album } from '@/types/Album';
 
 type Props = {
     album: Album;

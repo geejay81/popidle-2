@@ -1,10 +1,11 @@
 import Puzzle from "@/components/client-apps/Puzzle";
 import Header from "@/components/page/Header";
 import { getAlbum } from "@/data/album";
+import gameConfig from "@/data/config/game-config";
 import { notFound } from "next/navigation";
 
 type Props = {
-    params: { gameId: Number }
+    params: { gameId: number }
 }
 
 export default async function Page({ params }: Props) {
@@ -17,7 +18,7 @@ export default async function Page({ params }: Props) {
 
     return (
         <>
-            <Header title="Guess the 80's album" subtitle="" />
+            <Header title={gameConfig.puzzleTitle ?? 'Guess the album'} subtitle="" />
             <main className="container mx-auto max-w-5xl">
                 <Puzzle album={album} />
             </main>
