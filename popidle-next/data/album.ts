@@ -50,7 +50,10 @@ export async function getHistoricAlbums() {
     const currentPuzzleDate = currentPuzzleId();
     const allAlbums = await getAllAlbums();
 
-    return allAlbums.filter((album: Album) => album.gameId < currentPuzzleDate);
+    console.log(currentPuzzleDate);
+
+    return allAlbums.filter((album: Album) => (
+        album.gameId !== null &&album.gameId < currentPuzzleDate));
 }
 
 export async function getAllAlbums() {

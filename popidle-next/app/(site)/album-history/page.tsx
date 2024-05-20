@@ -4,6 +4,8 @@ import { Album } from "@/types/Album";
 import { Metadata } from "next";
 import Link from "next/link";
 
+export const revalidate = 600;
+
 export const metadata: Metadata = {
     title: "Previous album puzzles",
     description: "Play the whole back catalog!"
@@ -11,9 +13,8 @@ export const metadata: Metadata = {
 
 export default async function Page() {
 
-    const albums = await getHistoricAlbums();
-
-    const showHistory = albums && albums.legnth > 0;
+    const albums: Album[] = await getHistoricAlbums();
+    const showHistory = (albums?.length || 0) > 0;
     return (
         <>
             <Header title={metadata.title!.toString()} subtitle={metadata.description!.toString()} />
