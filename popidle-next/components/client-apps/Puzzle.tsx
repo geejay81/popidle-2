@@ -11,6 +11,7 @@ import { Album } from '@/types/Album';
 import headings from '@/ui/fonts/headings';
 import { getGameState, setGameState, setHistoryState } from '@/components/client-lib/StateManager';
 import { State } from '@/types/State';
+import GameHistory from './GameHistory';
 
 type Props = {
     gameType: string,
@@ -129,7 +130,7 @@ export default function Puzzle(props: Props) {
                     </div>
                 </div>
                 <div className='md:flex-1 p-4 space-y-4'>
-                    
+                    {gameType === 'daily' && <GameHistory />}
                 </div>
             </div>
         );
@@ -147,7 +148,7 @@ export default function Puzzle(props: Props) {
                     </div>
                 </div>
                 <div className='md:flex-1 p-4 space-y-4'>
-                    
+                    {gameMode === 'daily' && <GameHistory />}
                 </div>
             </div>
         )

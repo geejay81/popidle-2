@@ -8,7 +8,7 @@ export interface IGuessHistory {
     fail: number;
 }
 
-export interface IHistory {
+export interface IHistoryState {
     previousGame: number;
     currentStreak: number;
     maxStreak: number;
@@ -29,7 +29,7 @@ export class GuessHistory implements IGuessHistory {
     fail: number = 0;
 }
 
-export class History implements IHistory {
+export class HistoryState implements IHistoryState {
     previousGame: number = 0;
     currentStreak: number = 0;
     maxStreak: number = 0;

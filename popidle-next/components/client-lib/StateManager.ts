@@ -1,7 +1,7 @@
 "use client"
 
 import { Guess } from "@/types/Guess";
-import { GuessHistory, IGuessHistory, IHistory } from "@/types/History";
+import { GuessHistory, HistoryState, IGuessHistory, IHistoryState } from "@/types/History";
 import { State } from "@/types/State";
 
 const historyStateKey = 'popidle-history';
@@ -18,7 +18,7 @@ export function setGameState(gameId: number, guesses: Guess[]): void {
 
 export function setHistoryState(gameResult: string, guesses: Guess[], gameId: number) {
   if (typeof window !== "undefined" && window.localStorage) {  
-    let currentHistory: IHistory = getHistoryState();
+    let currentHistory: IHistoryState = getHistoryState();
     currentHistory.gamesPlayed = currentHistory.gamesPlayed + 1;
     currentHistory.gamesWon = currentHistory.gamesWon + (gameResult === 'won' ? 1: 0);
     currentHistory.winPercentage = (currentHistory.gamesWon / currentHistory.gamesPlayed) * 100.00;
@@ -81,21 +81,8 @@ export function getHistoryState() {
   if (typeof window !== "undefined" && window.localStorage) {
     const existingHistory = localStorage.getItem(historyStateKey);
     if (existingHistory !== null)
-      return Object.assign(new History(), JSON.parse(existingHistory));
-    const blankGuesses = {
-      one: 0, two: 0, three: 0, four: 0, five: 0, six: 0, fail: 0
-    }
-    const blankHistory = {
-      previousGame: 0,
-      currentStreak: 0,
-      maxStreak: 0,
-      guesses: blankGuesses,
-      winPercentage: 0,
-      gamesPlayed: 0,
-      gamesWon: 0,
-      averageGuesses: 0
-    }
-    return blankHistory;
+      return Object.assign(new HistoryState(), JSON.parse(existingHistory));
+    return new HistoryState();
   }
 }
 
