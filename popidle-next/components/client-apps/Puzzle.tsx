@@ -9,7 +9,7 @@ import { Guess } from '@/types/Guess';
 import ScoreBoard from './ScoreBoard';
 import { Album } from '@/types/Album';
 import headings from '@/ui/fonts/headings';
-import { getGameState, setGameState } from '@/components/client-lib/StateManager';
+import { getGameState, setGameState, setHistoryState } from '@/components/client-lib/StateManager';
 import { State } from '@/types/State';
 
 type Props = {
@@ -76,6 +76,7 @@ export default function Puzzle(props: Props) {
         if (newGuesses.length === 6 || guessResult === 'correct') {
             var gameResult = guessResult === 'correct' ? 'won' : 'lost';
             setGameMode(gameResult);
+            if (gameType === 'daily') setHistoryState(gameResult, guesses, album.gameId);
             return;
         }
 

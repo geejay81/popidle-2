@@ -1,22 +1,22 @@
 export interface IGuessHistory {
-    one: number,
-    two: number,
-    three: number,
-    four: number,
-    five: number,
-    six: number,
-    fail: number
+    one: number;
+    two: number;
+    three: number;
+    four: number;
+    five: number;
+    six: number;
+    fail: number;
 }
 
 export interface IHistory {
     previousGame: number;
     currentStreak: number;
     maxStreak: number;
-    guesses: IGuessHistory
-    winPercentage: number,
-    gamesPlayed: number,
-    gamesWon: number,
-    averageGuesses: number
+    guesses: IGuessHistory;
+    winPercentage: number;
+    gamesPlayed: number;
+    gamesWon: number;
+    averageGuesses: number;
 }
 
 export class GuessHistory implements IGuessHistory {
@@ -37,5 +37,5 @@ export class History implements IHistory {
     winPercentage: number = 0;
     gamesPlayed: number = 0;
     gamesWon: number = 0;
-    averageGuesses: number = 6;
+    averageGuesses: number = 0;
 }

@@ -1,7 +1,7 @@
 "use client"
 
 import { Guess } from "@/types/Guess";
-import { IGuessHistory, IHistory } from "@/types/History";
+import { GuessHistory, IGuessHistory, IHistory } from "@/types/History";
 import { State } from "@/types/State";
 
 const historyStateKey = 'popidle-history';
@@ -59,6 +59,7 @@ export function setHistoryState(gameResult: string, guesses: Guess[], gameId: nu
     }
     currentHistory.averageGuesses = calculateAverageGuesses(currentHistory.guesses, currentHistory.gamesPlayed);
     currentHistory.previousGame = gameId;
+    console.log(currentHistory);
     localStorage.setItem(historyStateKey, JSON.stringify(currentHistory));
   }
 }
@@ -81,7 +82,20 @@ export function getHistoryState() {
     const existingHistory = localStorage.getItem(historyStateKey);
     if (existingHistory !== null)
       return Object.assign(new History(), JSON.parse(existingHistory));
-    return new History();
+    const blankGuesses = {
+      one: 0, two: 0, three: 0, four: 0, five: 0, six: 0, fail: 0
+    }
+    const blankHistory = {
+      previousGame: 0,
+      currentStreak: 0,
+      maxStreak: 0,
+      guesses: blankGuesses,
+      winPercentage: 0,
+      gamesPlayed: 0,
+      gamesWon: 0,
+      averageGuesses: 0
+    }
+    return blankHistory;
   }
 }
 
