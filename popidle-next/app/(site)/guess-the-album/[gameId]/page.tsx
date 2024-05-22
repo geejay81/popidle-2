@@ -30,7 +30,7 @@ export default async function Page({ params }: Props) {
         <>
             <Header title={gameConfig.puzzleTitle ?? 'Guess the album'} subtitle="" />
             <main className="container mx-auto max-w-5xl">
-                <Puzzle album={album} />
+                <Puzzle album={album} gameType="history" />
             </main>
         </>
         

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PixelatedImage from './PixelatedImage';
 import headingFont from '@/ui/fonts/headings';
 import Combobox from './Combobox';
@@ -9,21 +9,50 @@ import { Guess } from '@/types/Guess';
 import ScoreBoard from './ScoreBoard';
 import { Album } from '@/types/Album';
 import headings from '@/ui/fonts/headings';
+import { getGameState, setGameState } from '@/components/client-lib/StateManager';
+import { State } from '@/types/State';
 
 type Props = {
+    gameType: string,
     album: Album;
 }
 
 export default function Puzzle(props: Props) {
 
     const album = props.album;
+    const gameType = props.gameType;
     const levels = [40, 24, 16, 8, 4, 2];
-    const defaultGuessList: Guess[] = [];
-    const [level, setLevel] = useState(0);
-    const [pixelSize, setPixelSize] = useState(40);
-    const [gameMode, setGameMode] = useState('play');
-    const [guesses, setGuesses] = useState(defaultGuessList);
+
+    let initialGuesses: Guess[] = [];
+    let initialPixelSize = levels[0];
+    let initialGameMode = 'loading';
+
     const [selectedItem, setSelectedItem] = useState<string>('');
+    const [pixelSize, setPixelSize] = useState(initialPixelSize);
+    const [guesses, setGuesses] = useState(initialGuesses);
+    const [gameMode, setGameMode] = useState(initialGameMode);
+
+    const initialiseState = () => {
+        let initialGameMode = 'play';
+        if (gameType === 'daily') {
+            const existingState: State = getGameState();
+            if (album.gameId == existingState?.puzzleNumber) {
+                setGuesses(existingState.guesses);
+                setPixelSize(
+                    existingState.guesses.length === 6
+                        ? levels[5]
+                        : levels[existingState.guesses.length]);
+                if (existingState.guesses[existingState.guesses.length - 1].result === 'correct') {
+                    initialGameMode = 'won';
+                } else if (existingState.guesses.length === 6) {
+                    initialGameMode = 'lost';
+                }
+            };
+        }
+        setGameMode(initialGameMode);
+    }
+
+    useEffect(initialiseState,[]);
 
     const handleGuess = (e: React.MouseEvent<HTMLElement>) => {
         e.persist();
@@ -37,17 +66,20 @@ export default function Puzzle(props: Props) {
         else if (guessed === `${album.albumTitle} - ${album.artist}`) guessResult = 'correct';
         else guessResult = 'incorrect';
 
-        setGuesses([...guesses, { result: guessResult, answer: guessed }]);
+        const newGuesses = [...guesses, { result: guessResult, answer: guessed }];
+        setGuesses(newGuesses);
 
-        if (levels.length === guesses.length || guessResult === 'correct') {
+        if (gameType === 'daily') {
+            setGameState(album.gameId, newGuesses);
+        }
+
+        if (newGuesses.length === 6 || guessResult === 'correct') {
             var gameResult = guessResult === 'correct' ? 'won' : 'lost';
             setGameMode(gameResult);
             return;
         }
 
-        const newLevel = level + 1;
-        setLevel(newLevel);
-        setPixelSize(levels[newLevel]);
+        if (pixelSize > levels[5]) setPixelSize(levels[newGuesses.length]);
     }
 
     const PlayMode = () => {
@@ -121,6 +153,7 @@ export default function Puzzle(props: Props) {
     }
 
     switch (gameMode) {
+        case "loading": return <p>Loading...</p>
         case "play": return <PlayMode />
         case "won": return <WonMode />
         case "lost": return <LostMode />
