@@ -7,10 +7,10 @@ import Footer from "@/components/page/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PopIdle",
-  description: "Music puzzles",
+  title: process.env.GAME_TITLE,
+  description: "Guess the album from the pixelated image of the cover art.",
   icons: {
-    icon: '/favicon.ico'
+    icon: `/favicon.ico`
   }
 };
 
