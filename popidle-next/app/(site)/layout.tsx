@@ -10,15 +10,15 @@ export const metadata: Metadata = {
   title: process.env.GAME_TITLE,
   description: "Guess the album from the pixelated image of the cover art.",
   icons: {
-    icon: `/${process.env.GAME_TITLE}/favicon.ico`,
-    apple: `/${process.env.GAME_TITLE}/apple-touch-icon.png`,
+    icon: `/themes/${process.env.GAME_TITLE}/favicon.ico`,
+    apple: `/themes/${process.env.GAME_TITLE}/apple-touch-icon.png`,
   },
   openGraph: {
     title: process.env.GAME_TITLE,
-    images: `/${process.env.GAME_TITLE}/popidle-card.jpg`
+    images: `/themes/${process.env.GAME_TITLE}/popidle-card.jpg`
   },
   twitter: {
-    images: `/${process.env.GAME_TITLE}/popidle-card.jpg`,
+    images: `/themes/${process.env.GAME_TITLE}/popidle-card.jpg`,
     card: "summary"
   }
 };
