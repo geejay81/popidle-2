@@ -7,6 +7,7 @@ import Footer from "@/components/page/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.BASE_URL || ''),
   title: process.env.GAME_TITLE,
   description: "Guess the album from the pixelated image of the cover art.",
   icons: {
