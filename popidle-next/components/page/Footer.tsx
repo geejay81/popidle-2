@@ -30,6 +30,7 @@ export default function Footer() {
                             {link.icon}<span className="sr-only">Visit PopIdle on {link.title}</span>
                         </Link>
                     ))}
+                    <a href="#" id="open_preferences_center">Cookie consent</a>
                 </div>
             </div>
         </footer>
