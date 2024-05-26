@@ -123,7 +123,7 @@ export default function Puzzle(props: Props) {
             <div className='flex flex-col md:flex-row md:justify-between md:gap-4'>
                 <div className='md:flex-1 p-4 px-8 space-y-4'>
                     <SpotifyWidget albumId={album.embedKey} />
-                    <div className='p-6 rounded-lg bg-green-500 text-white space-y-4'>
+                    <div className='p-6 rounded-lg bg-popidle-success-bg text-popidle-success-fg space-y-4'>
                         <h2 className={`text-2xl font-bold ${headingFont.className}`}>Top of the Pops!</h2>
                         <p>You knew that the answer was <span className='font-bold'>{album.albumTitle}</span> by <span className='font-bold'>{album.artist}</span>.</p>
                         <ScoreBoard guesses={guesses} />
@@ -141,7 +141,7 @@ export default function Puzzle(props: Props) {
             <div className='flex flex-col md:flex-row md:justify-between md:gap-4'>
                 <div className='md:flex-1 p-4 space-y-4'>
                     <SpotifyWidget albumId={album.embedKey} />
-                    <div className='p-6 bg-red-500 rounded-lg text-white space-y-4'>
+                    <div className='p-6 bg-popidle-danger-bg rounded-lg text-popidle-danger-fg space-y-4'>
                         <h2 className={`text-2xl font-bold ${headingFont.className}`}>Better luck next time!</h2>
                         <p>The answer was <span className='font-bold'>{album.albumTitle}</span> by <span className='font-bold'>{album.artist}</span>.</p>
                         <ScoreBoard guesses={guesses} />

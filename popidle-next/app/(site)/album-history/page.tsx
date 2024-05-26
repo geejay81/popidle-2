@@ -28,7 +28,7 @@ export default async function Page() {
                             className="mr-4 my-2 float-left">
                             <Link 
                                 href={`/guess-the-album/${album.gameId}`}
-                                className="bg-blue-700 text-white px-5 py-4 rounded-lg inline-block"
+                                className="bg-popidle-info-bg text-popidle-info-fg px-5 py-4 rounded-lg inline-block"
                                 >{album.gameId}</Link></li>
                     ))}
                     </ul>

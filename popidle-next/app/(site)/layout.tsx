@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     images: `/themes/${process.env.GAME_TITLE}/popidle-card.jpg`,
-    card: "summary"
+    card: "summary_large_image"
   }
 };
 

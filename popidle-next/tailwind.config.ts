@@ -11,7 +11,15 @@ const config: Config = {
     extend: {
       colors: {
         'popidle-banner-bg': gameConfig.colourBannerBackground,
-        'popidle-banner-text': gameConfig.colourBannerForeground
+        'popidle-banner-text': gameConfig.colourBannerForeground,
+        'popidle-info-bg': '#1DD6FA',
+        'popidle-info-fg': '#000',
+        'popidle-success-bg': '#48c78e',
+        'popidle-success-fg': '#fff',
+        'popidle-warning-bg': '#EEF510',
+        'popidle-warning-fg': '#000',
+        'popidle-danger-bg': '#ff4fa7',
+        'popidle-danger-fg': '#fff',
       }
     }
   },

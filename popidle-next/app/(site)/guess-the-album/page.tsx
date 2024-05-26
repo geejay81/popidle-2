@@ -23,7 +23,7 @@ export default async function Page() {
     return (
         <>
             <Header title={gameConfig.puzzleTitle ?? 'Guess the album'} subtitle="" />
-            <main className="container mx-auto max-w-5xl">
+            <main className="grow container mx-auto max-w-5xl">
                 <Puzzle album={album} gameType="daily" />
             </main>
         </>
