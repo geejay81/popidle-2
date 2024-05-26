@@ -16,6 +16,13 @@ export default function ConsentManagementPlatform({GA_MEASUREMENT_ID} : ConsentM
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
+            gtag('consent', 'default', {
+                'analytics_storage': 'denied',
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied'
+            });
+
             gtag('config', '${GA_MEASUREMENT_ID}');
             `}</Script>
             {/* <Script strategy="afterInteractive" 
