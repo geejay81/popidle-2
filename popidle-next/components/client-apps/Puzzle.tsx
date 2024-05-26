@@ -86,11 +86,11 @@ export default function Puzzle(props: Props) {
 
     const PlayMode = () => {
         return (
-            <div className='flex flex-col md:flex-row md:justify-between md:gap-4'>
-                <div className='md:flex-1 p-4 text-center'>
+            <div className='flex flex-col md:flex-row md:justify-between md:gap-4 py-4 px-8'>
+                <div className='md:flex-1 py-4 text-center'>
                     <PixelatedImage imageUrl={album.coverArt} pixelSize={pixelSize} height={300} width={300} />
                 </div>
-                <div className='md:flex-1 p-4 space-y-4'>
+                <div className='md:flex-1 py-4 space-y-4'>
                     <div>
                         <Combobox selectedItem={selectedItem} setSelectedItem={setSelectedItem} srcUrl='/api/albums' />
                     </div>
@@ -121,7 +121,7 @@ export default function Puzzle(props: Props) {
     const WonMode = () => {
         return (
             <div className='flex flex-col md:flex-row md:justify-between md:gap-4'>
-                <div className='md:flex-1 p-4 space-y-4'>
+                <div className='md:flex-1 p-4 px-8 space-y-4'>
                     <SpotifyWidget albumId={album.embedKey} />
                     <div className='p-6 rounded-lg bg-green-500 text-white space-y-4'>
                         <h2 className={`text-2xl font-bold ${headingFont.className}`}>Top of the Pops!</h2>

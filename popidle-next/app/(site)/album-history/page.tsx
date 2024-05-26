@@ -19,7 +19,7 @@ export default async function Page() {
         <>
             <Header title={metadata.title!.toString()} subtitle={metadata.description!.toString()} />
             <main className="grow">
-                <div className="container mx-auto max-w-5xl px-4 py-4 space-y-2">
+                <div className="container mx-auto max-w-5xl px-8 py-4 space-y-2">
             {showHistory
                 ?
                     <ul className="list-none m-0">

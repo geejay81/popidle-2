@@ -24,7 +24,7 @@ const navLinks = [
 export default function Navbar() {
     return (
         <header className="bg-black text-slate-100">
-            <nav className="container mx-auto max-w-5xl flex items-center justify-between p-4">
+            <nav className="container mx-auto max-w-5xl flex items-center justify-between p-4 px-8">
                 <div className="text-2xl md:text-3xl">
                     <Link href="/" className={`${logo.className} space-x-1`}>
                         <FaRecordVinyl className="inline" />
