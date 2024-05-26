@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/page/Navbar";
 import Footer from "@/components/page/Footer";
+import ConsentManagementPlatform from "@/components/client-apps/ConsentManagementPlatform";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,6 +36,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <ConsentManagementPlatform GA_MEASUREMENT_ID={process.env.GTAG || ''} />
       </body>
     </html>
   );
