@@ -66,14 +66,14 @@ function ComboBox({selectedItem, setSelectedItem, srcUrl}: ComboBoxProps) {
               className="w-full p-4 border border-black focus:border-2"
               {...getInputProps()}
             />
-            <button
+            {/* <button
               aria-label="toggle menu"
               className="p-4 border border-black focus:border-2"
               type="button"
               {...getToggleButtonProps()}
             >
               {isOpen ? <>&#8593;</> : <>&#8595;</>}
-            </button>
+            </button> */}
           </div>
         </div>
         <ul
