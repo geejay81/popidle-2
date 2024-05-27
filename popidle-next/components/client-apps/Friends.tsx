@@ -20,7 +20,7 @@ export default function Friends({gameTitle}: {gameTitle: string}) {
                         <span className="ml-2 truncate">PopIdle (The Original)</span>
                     </a>{ gameTitle !== 'PopIdle80s' &&
                     <a href="https://80s.popidle.app" 
-                        className="w-fill flex p-3 pl-3 bg-popidle-danger-bg text-popidle-danger-fg hover:bg-gray-200 focus:bg-gray-200  rounded-lg">
+                        className="w-fill flex p-3 pl-3 bg-popidle-danger-bg text-popidle-danger-fg hover:bg-gray-200 focus:bg-gray-200 hover:text-black focus:text-black rounded-lg">
                         <FaRecordVinyl className="flex-none w-6 h-full" />
                         <span className="ml-2 truncate">PopIdle 80s</span>
                     </a>}{ gameTitle !== 'PopIdle90s' &&
