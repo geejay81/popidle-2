@@ -12,16 +12,19 @@ import headings from '@/ui/fonts/headings';
 import { getGameState, setGameState, setHistoryState } from '@/components/client-lib/StateManager';
 import { State } from '@/types/State';
 import GameHistory from './GameHistory';
+import { createShareablePuzzzleBoard, shareContent } from '../client-lib/SocialSharer';
 
 type Props = {
     gameType: string,
     album: Album;
+    gameTitle: string;
 }
 
 export default function Puzzle(props: Props) {
 
     const album = props.album;
     const gameType = props.gameType;
+    const gameTitle = props.gameTitle || 'PopIdle';
     const levels = [40, 24, 16, 8, 4, 2];
 
     let initialGuesses: Guess[] = [];
@@ -84,19 +87,40 @@ export default function Puzzle(props: Props) {
         if (pixelSize > levels[5]) setPixelSize(levels[newGuesses.length]);
     }
 
+    const handleShare = (e: React.MouseEvent<HTMLElement>) => {
+        e.persist();
+
+        const url = window.location.href;
+        const hashtags = `#PopIdle #${album.gameId} #${gameTitle} #${gameTitle}${album.gameId}`;
+        const resultEmojiBoard = createShareablePuzzzleBoard(guesses);
+
+        const textToShare = `${hashtags}
+
+${resultEmojiBoard}
+
+${url}`;
+
+        const shareData: ShareData = {
+            title: gameTitle,
+            text: textToShare
+        };
+
+        shareContent(shareData);
+    }
+
     const PlayMode = () => {
         return (
             <div className='flex flex-col md:flex-row md:justify-between md:gap-4 py-4 px-8'>
-                <div className='md:flex-1 py-4 text-center'>
+                <div className='md:flex-1 pb-4 text-center'>
                     <PixelatedImage imageUrl={album.coverArt} pixelSize={pixelSize} height={300} width={300} />
                 </div>
-                <div className='md:flex-1 py-4 space-y-4'>
+                <div className='md:flex-1 pb-4 space-y-4'>
                     <div>
                         <Combobox selectedItem={selectedItem} setSelectedItem={setSelectedItem} srcUrl='/api/albums' />
                     </div>
                     <div>
                         <button
-                            className={`bg-popidle-banner-bg text-xl !text-popidle-banner-fg p-4 rounded-md w-full ${headings.className}`}
+                            className={`bg-popidle-banner-bg text-xl text-popidle-banner-fg p-4 rounded-md w-full ${headings.className}`}
                             type="button" onClick={handleGuess}>Guess</button>
                     </div>
                     <div>
@@ -127,9 +151,12 @@ export default function Puzzle(props: Props) {
                         <h2 className={`text-2xl font-bold ${headingFont.className}`}>Top of the Pops!</h2>
                         <p>You knew that the answer was <span className='font-bold'>{album.albumTitle}</span> by <span className='font-bold'>{album.artist}</span>.</p>
                         <ScoreBoard guesses={guesses} />
+                        <button
+                            className={`bg-popidle-success-fg text-xl !text-popidle-success-bg p-4 rounded-md w-full ${headings.className}`}
+                            type="button" onClick={handleShare}>Share</button>
                     </div>
                 </div>
-                <div className='md:flex-1 p-4 space-y-4'>
+                <div className='md:flex-1 p-4 px-8 space-y-4'>
                     {gameType === 'daily' && <GameHistory />}
                 </div>
             </div>
@@ -139,23 +166,34 @@ export default function Puzzle(props: Props) {
     const LostMode = () => {
         return (
             <div className='flex flex-col md:flex-row md:justify-between md:gap-4'>
-                <div className='md:flex-1 p-4 space-y-4'>
+                <div className='md:flex-1 p-4 px-8 space-y-4'>
                     <SpotifyWidget albumId={album.embedKey} />
                     <div className='p-6 bg-popidle-danger-bg rounded-lg text-popidle-danger-fg space-y-4'>
                         <h2 className={`text-2xl font-bold ${headingFont.className}`}>Better luck next time!</h2>
                         <p>The answer was <span className='font-bold'>{album.albumTitle}</span> by <span className='font-bold'>{album.artist}</span>.</p>
                         <ScoreBoard guesses={guesses} />
+                        <button
+                            className={`bg-popidle-danger-fg text-xl !text-popidle-danger-bg p-4 rounded-md w-full ${headings.className}`}
+                            type="button" onClick={handleShare}>Share</button>
                     </div>
                 </div>
-                <div className='md:flex-1 p-4 space-y-4'>
+                <div className='md:flex-1 p-4 px-8 space-y-4'>
                     {gameMode === 'daily' && <GameHistory />}
                 </div>
             </div>
         )
     }
 
+    const LoadingMode = () => (
+        <div className='flex flex-col md:flex-row md:justify-between md:gap-4'>
+            <div className='md:flex-1 p-4 px-8 space-y-4'>
+                <p>Loading ...</p>
+            </div>
+        </div>
+    );
+
     switch (gameMode) {
-        case "loading": return <p>Loading...</p>
+        case "loading": return <LoadingMode />
         case "play": return <PlayMode />
         case "won": return <WonMode />
         case "lost": return <LostMode />

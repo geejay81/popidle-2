@@ -24,7 +24,7 @@ export default async function Page() {
         <>
             <Header title={gameConfig.puzzleTitle ?? 'Guess the album'} subtitle="" />
             <main className="grow container mx-auto max-w-5xl">
-                <Puzzle album={album} gameType="daily" />
+                <Puzzle album={album} gameType="daily" gameTitle={process.env.GAME_TITLE || 'PopIdle'} />
             </main>
         </>
     )

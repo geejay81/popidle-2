@@ -30,7 +30,7 @@ export default async function Page({ params }: Props) {
         <>
             <Header title={gameConfig.puzzleTitle ?? 'Guess the album'} subtitle="" />
             <main className="grow container mx-auto max-w-5xl">
-                <Puzzle album={album} gameType="history" />
+                <Puzzle album={album} gameType="history" gameTitle={process.env.GAME_TITLE || 'PopIdle'} />
             </main>
         </>
         
