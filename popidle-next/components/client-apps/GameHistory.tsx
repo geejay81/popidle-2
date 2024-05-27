@@ -11,15 +11,23 @@ export default function GameHistory() {
     return (
         <div className="p-6 rounded-lg bg-popidle-info-bg text-popidle-info-fg space-y-4">
             <h2 className={`text-2xl font-bold ${headingFont.className}`}>Rising up the Charts!</h2>
-            <dl className="max-w-md text-slate-900">
-                <dt className="mb-1 text-slate-800 md:text-lg">Current streak</dt>
-                <dd className="text-lg font-semibold">{historyStats.currentStreak}</dd>
-                <dt className="mb-1 text-slate-800 md:text-lg">Max streak</dt>
-                <dd className="text-lg font-semibold">{historyStats.maxStreak}</dd>
-                <dt className="mb-1 text-slate-800 md:text-lg">Games played</dt>
-                <dd className="text-lg font-semibold">{historyStats.gamesPlayed}</dd>
-                <dt className="mb-1 text-slate-800 md:text-lg">Games won</dt>
-                <dd className="text-lg font-semibold">{historyStats.gamesWon}</dd>
+            <dl className="max-w-md text-slate-900 grid grid-cols-2 gap-4">
+                <div>
+                    <dt className="mb-1 text-slate-800 md:text-lg text-center">Current streak</dt>
+                    <dd className="text-lg font-semibold text-center">{historyStats.currentStreak}</dd>
+                </div>
+                <div>
+                    <dt className="mb-1 text-slate-800 md:text-lg text-center">Max streak</dt>
+                    <dd className="text-lg font-semibold text-center">{historyStats.maxStreak}</dd>
+                </div>
+                <div>
+                    <dt className="mb-1 text-slate-800 md:text-lg text-center">Games won</dt>
+                    <dd className="text-lg font-semibold text-center">{historyStats.gamesWon}/{historyStats.gamesPlayed}</dd>
+                </div>
+                <div>
+                    <dt className="mb-1 text-slate-800 md:text-lg text-center">Games won</dt>
+                    <dd className="text-lg font-semibold text-center">{historyStats.winPercentage}%</dd>
+                </div>
             </dl>
         </div>
     );

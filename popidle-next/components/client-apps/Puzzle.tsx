@@ -13,6 +13,7 @@ import { getGameState, setGameState, setHistoryState } from '@/components/client
 import { State } from '@/types/State';
 import GameHistory from './GameHistory';
 import { createShareablePuzzzleBoard, shareContent } from '../client-lib/SocialSharer';
+import Friends from './Friends';
 
 type Props = {
     gameType: string,
@@ -158,6 +159,7 @@ ${url}`;
                 </div>
                 <div className='md:flex-1 py-4 space-y-4'>
                     {gameType === 'daily' && <GameHistory />}
+                    <Friends gameTitle={gameTitle || ''} />
                 </div>
             </div>
         );
@@ -179,6 +181,7 @@ ${url}`;
                 </div>
                 <div className='md:flex-1 py-4 space-y-4'>
                     {gameMode === 'daily' && <GameHistory />}
+                    <Friends gameTitle={gameTitle || ''} />
                 </div>
             </div>
         )
