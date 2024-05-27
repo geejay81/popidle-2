@@ -64,6 +64,7 @@ function ComboBox({selectedItem, setSelectedItem, srcUrl}: ComboBoxProps) {
               id="search-field"
               placeholder="Search albums"
               className="w-full p-4 border border-black focus:border-2"
+              autoComplete="off"
               {...getInputProps()}
             />
             {/* <button
