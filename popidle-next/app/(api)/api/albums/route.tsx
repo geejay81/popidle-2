@@ -1,5 +1,7 @@
 import { getAllAlbums } from '@/data/album'
 import { NextResponse } from 'next/server'
+
+export const revalidate = 600;
  
 export async function GET(request: Request) {
 

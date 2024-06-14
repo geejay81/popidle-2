@@ -5,7 +5,7 @@ import gameConfig from "@/data/config/game-config";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-export const revalidate = 600;
+export const revalidate = 3600;
 
 type Props = {
     params: { gameId: number }
