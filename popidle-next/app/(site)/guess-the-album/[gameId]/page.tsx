@@ -1,11 +1,12 @@
 import Puzzle from "@/components/client-apps/Puzzle";
 import Header from "@/components/page/Header";
-import { getAlbum } from "@/data/album";
+import { getAlbum, getHistoricAlbums } from "@/data/album";
 import gameConfig from "@/data/config/game-config";
+import { Album } from "@/types/Album";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-export const revalidate = 3600;
+//export const revalidate = 3600;
 
 type Props = {
     params: { gameId: number }
@@ -16,6 +17,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `Guess the album, game #${params.gameId}`,
       description: "Can you guess this previous album from the pixelated cover art?"
     }
+  }
+
+export async function generateStaticParams() {
+
+    const albums = await getHistoricAlbums();
+
+    return albums.map((album: Album) => { gameId: album.gameId.toString() });
   }
 
 export default async function Page({ params }: Props) {
