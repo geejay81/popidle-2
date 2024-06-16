@@ -17,20 +17,12 @@ function getOptionFilter(inputValue: string) {
 type ComboBoxProps = {
   selectedItem: string,
   setSelectedItem: any,
-  srcUrl: string
+  options: string[]
 }
 
-function ComboBox({selectedItem, setSelectedItem, srcUrl}: ComboBoxProps) {
-  const [options, setOptions] = useState<string[]>([]);
-  const [items, setItems] = useState<string[]>([]);
+function ComboBox({selectedItem, setSelectedItem, options}: ComboBoxProps) {
 
-  useEffect(() => {
-    fetch(srcUrl)
-        .then((res) => res.json())
-        .then((data) => {
-          setOptions(data.albums.map((album: any) => album.value));
-        })
-  },[srcUrl]);
+  const [items, setItems] = useState<string[]>([]);
 
   const {
     isOpen,

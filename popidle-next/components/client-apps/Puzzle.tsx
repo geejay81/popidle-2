@@ -36,6 +36,7 @@ export default function Puzzle(props: Props) {
     const [pixelSize, setPixelSize] = useState(initialPixelSize);
     const [guesses, setGuesses] = useState(initialGuesses);
     const [gameMode, setGameMode] = useState(initialGameMode);
+    const [options, setOptions] = useState<string[]>([]);
 
     const initialiseState = () => {
         let initialGameMode = 'play';
@@ -58,6 +59,14 @@ export default function Puzzle(props: Props) {
     }
 
     useEffect(initialiseState,[]);
+
+    useEffect(() => {
+        fetch('/api/albums')
+            .then((res) => res.json())
+            .then((data) => {
+            setOptions(data.albums.map((album: any) => album.value));
+            })
+    },[]);
 
     const handleGuess = (e: React.MouseEvent<HTMLElement>) => {
         e.persist();
@@ -117,7 +126,7 @@ ${url}`;
                 </div>
                 <div className='md:flex-1 py-4 space-y-4'>
                     <div>
-                        <Combobox selectedItem={selectedItem} setSelectedItem={setSelectedItem} srcUrl='/api/albums' />
+                        <Combobox selectedItem={selectedItem} setSelectedItem={setSelectedItem} options={options} />
                     </div>
                     <div>
                         <button
