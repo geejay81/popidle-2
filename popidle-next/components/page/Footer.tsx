@@ -26,7 +26,8 @@ export default function Footer() {
             <div className="container mx-auto max-w-screen-lg flex flex-col-reverse md:flex-row md:items-center md:justify-between p-6 px-8 space-y-4 md:space-y-0">
                 <div className="inline-flex flex-row items-center space-x-4">
                     {footerLinks.map((link,index) => (
-                        <Link key={index} href={link.url} title={link.title} className="p-2">
+                        <Link key={index} href={link.url} title={link.title} className="p-2"
+                            prefetch={false}>
                             {link.icon}<span className="sr-only">Visit PopIdle on {link.title}</span>
                         </Link>
                     ))}

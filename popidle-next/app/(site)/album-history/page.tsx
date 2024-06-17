@@ -29,6 +29,7 @@ export default async function Page() {
                             <Link 
                                 href={`/guess-the-album/${album.gameId}`}
                                 className="bg-popidle-info-bg text-popidle-info-fg px-5 py-4 rounded-lg inline-block"
+                                prefetch={false}
                                 >{album.gameId}</Link></li>
                     ))}
                     </ul>
