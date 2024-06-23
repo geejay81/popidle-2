@@ -10,15 +10,22 @@ export async function GET(request: NextRequest) {
                 status: 401 })
         }
         
-        revalidatePath('/', 'layout');
+        revalidatePath('/guess-the-album', 'layout');
+        revalidatePath('/album-history', 'layout');
         return NextResponse.json({ revalidated: true, now: Date.now() });
 
-    } catch {
+    } catch (err) {
 
+        let errorMessage = 'error revalidating data';
+        
+        if (err instanceof Error) {
+            errorMessage = `error revalidating data: ${err.message}`
+        }
+            
         return NextResponse.json({
             revalidated: false,
             now: Date.now(),
-            message: 'error revalidating data',
+            message: errorMessage,
         });
     }
 }

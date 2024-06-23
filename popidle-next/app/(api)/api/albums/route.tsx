@@ -5,8 +5,6 @@ export async function GET(request: Request) {
 
     const albums = await getAllAlbums();
 
-    // TODO: handle errors here.
-
     const autocompleteOptions = albums.map((album: any) => (
         {
             id: `${album._id}`,
