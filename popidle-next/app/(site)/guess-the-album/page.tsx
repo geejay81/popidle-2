@@ -5,8 +5,6 @@ import gameConfig from "@/data/config/game-config"
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-// export const revalidate = 3600;
-
 export const metadata: Metadata = {
     title: "Guess the album",
     description: "Can you guess the album from the pixelated image of the cover art?"

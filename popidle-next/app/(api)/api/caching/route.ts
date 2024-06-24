@@ -12,8 +12,9 @@ export async function GET(request: NextRequest) {
                 status: 401 })
         }
         
-        revalidatePath('/guess-the-album', 'layout');
-        revalidatePath('/album-history', 'layout');
+        revalidatePath('/(api)/api/albums', 'page');
+        revalidatePath('/(site)/guess-the-album', 'page');
+        revalidatePath('/(site)/album-history', 'page');
         return NextResponse.json({ revalidated: true, now: Date.now() });
 
     } catch (err) {
