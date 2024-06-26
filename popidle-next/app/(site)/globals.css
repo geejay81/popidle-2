@@ -1,17 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
-/* 
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
-
-.logo {
-    font-family: 'Pixelify Sans', Arial, Helvetica, sans-serif;
-    font-size: 2rem;
-}
-  
-h1, h2, h3, h4, h5, .title, button {
-    font-family: 'Staatliches', Arial, Helvetica, sans-serif;
-} */
