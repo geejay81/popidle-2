@@ -23,9 +23,9 @@ const navLinks = [
 
 export default function Navbar() {
     return (
-        <header className="bg-black text-slate-100">
-            <nav className="container mx-auto max-w-5xl flex items-center justify-between p-4 px-8">
-                <div className="text-2xl md:text-3xl">
+        <nav className="navbar-section">
+            <div className="navbar-container">
+                <div className="navbar-brand">
                     <Link href="/" className={`${logo.className} space-x-1`}
                         prefetch={false}
                     >
@@ -40,16 +40,16 @@ export default function Navbar() {
                             <Link 
                                 key={link.url} 
                                 href={link.url} 
-                                className="inline-flex flex-row items-center space-x-2"
+                                className="navbar-link"
                                 title={link.title}
                                 prefetch={false}>
                                 {link.icon}
-                                <span className="sr-only md:not-sr-only">{link.title}</span>
+                                <span className="navbar-link-text">{link.title}</span>
                             </Link>
                         ))
                     }
                 </div> 
-            </nav>
-        </header>
+            </div>
+        </nav>
     )
 }

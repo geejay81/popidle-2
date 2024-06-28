@@ -31,8 +31,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
-      <body className={`flex min-h-full flex-col ${inter.className}`}>
+    <html lang="en">
+      <body className={`${inter.className}`}>
         <Navbar />
         {children}
         <Footer />
