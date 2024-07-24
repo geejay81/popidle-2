@@ -1,6 +1,6 @@
 import logo from "@/ui/fonts/logo";
 import Link from "next/link";
-import { FaRecordVinyl, FaHome, FaPuzzlePiece, FaCalendar } from 'react-icons/fa';
+import { FaRecordVinyl, FaHome, FaPuzzlePiece, FaCalendar, FaPlus } from 'react-icons/fa';
 import gameConfig from "@/data/config/game-config";
  
 const navLinks = [
@@ -18,6 +18,11 @@ const navLinks = [
         "title": "History",
         "url": "/album-history",
         "icon": <FaCalendar className="inline" />
+    },
+    {
+        "title": "More Games",
+        "url": "/games",
+        "icon": <FaPlus className="inline" />
     }
 ]
 
