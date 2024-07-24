@@ -26,7 +26,7 @@ export default function GameHistory() {
                 </div>
                 <div>
                     <dt className="mb-1 text-slate-800 md:text-lg text-center">Games won</dt>
-                    <dd className="text-lg font-semibold text-center">{historyStats.winPercentage}%</dd>
+                    <dd className="text-lg font-semibold text-center">{historyStats.winPercentage.toFixed(2)}%</dd>
                 </div>
             </dl>
         </div>
