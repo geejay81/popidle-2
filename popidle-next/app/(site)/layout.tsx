@@ -4,7 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/page/Navbar";
 import Footer from "@/components/page/Footer";
 import ConsentManagementPlatform from "@/components/client-apps/ConsentManagementPlatform";
-import Script from "next/dist/client/script";
+import Script from "next/script";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,7 +39,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <ConsentManagementPlatform GA_MEASUREMENT_ID={process.env.GTAG || ''} />
-        <Script src="/scripts/clarity.js" id="clarity-script" data-project-id={process.env.nhone5e0z5}></Script>
+        <Script src="/scripts/clarity.js" id="clarity-script" data-project-id={process.env.CLARITY_PROJECT_ID} strategy="afterInteractive"></Script>
       </body>
     </html>
   );
