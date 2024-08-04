@@ -38,8 +38,8 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
-        <ConsentManagementPlatform GA_MEASUREMENT_ID={process.env.GTAG || ''} />
         <Script src="/scripts/clarity.js" id="clarity-script" data-project-id={process.env.CLARITY_PROJECT_ID} strategy="afterInteractive"></Script>
+        <ConsentManagementPlatform GA_MEASUREMENT_ID={process.env.GTAG || ''} />
       </body>
     </html>
   );
