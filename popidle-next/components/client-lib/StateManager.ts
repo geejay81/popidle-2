@@ -77,13 +77,14 @@ function calculateAverageGuesses(guesses: IGuessHistory, gamesPlayed: number): n
     return Number((totalGuesses / gamesPlayed).toPrecision(3));
   }
 
-export function getHistoryState() {
+export function getHistoryState(): HistoryState {
   if (typeof window !== "undefined" && window.localStorage) {
     const existingHistory = localStorage.getItem(historyStateKey);
-    if (existingHistory !== null)
+    console.log(existingHistory);
+    if (existingHistory !== null && existingHistory !== undefined)
       return Object.assign(new HistoryState(), JSON.parse(existingHistory));
-    return new HistoryState();
   }
+  return new HistoryState();
 }
 
 export function getGameState() {
