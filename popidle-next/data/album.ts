@@ -63,7 +63,7 @@ export async function getAllAlbums() {
     const [gameStartYear, gameEndYear] = getGamePeriod();
 
     return createClient(clientConfig).fetch(
-        groq`*[_type == "album" && defined(gameId) && year >= ${gameStartYear} && year <= ${gameEndYear}]{
+        groq`*[_type == "album" && defined(${gameConfig.gameDatabaseRecordId}) && year >= ${gameStartYear} && year <= ${gameEndYear}]{
             _id,
             artist,
             albumTitle,
