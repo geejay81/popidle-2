@@ -27,7 +27,12 @@ export default function ConsentManagementPlatform({GA_MEASUREMENT_ID} : ConsentM
                 'ad_personalization': 'denied'
             });
 
-            gtag('config', '${GA_MEASUREMENT_ID}');
+            gtag('config', '${GA_MEASUREMENT_ID}', {
+              'linker': {
+                'domains': ['80s.popidle.app', '90s.popidle.app']
+              },
+              'page_location': window.location.href
+            });
             `}</Script>
             <Script src="//www.termsfeed.com/public/cookie-consent/4.1.0/cookie-consent.js" onLoad={() => {
                 cookieconsent.run(
