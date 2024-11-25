@@ -1,12 +1,16 @@
 import Link from "next/link";
-import { FaInstagram, FaSpotify } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaBluesky, FaXTwitter, FaInstagram, FaSpotify, FaCookie } from "react-icons/fa6";
 
 const footerLinks = [
     {
         "title": "X",
         "url": "https://x.com/popidlegame",
         "icon": <FaXTwitter />
+    },
+    {
+        "title": "BlueSky",
+        "url": "https://bsky.app/profile/popidle.app",
+        "icon": <FaBluesky />
     },
     {
         "title": "Instagram",
@@ -31,7 +35,10 @@ export default function Footer() {
                             {link.icon}<span className="sr-only">Visit PopIdle on {link.title}</span>
                         </Link>
                     ))}
-                    <a href="#" id="open_preferences_center">Cookie consent</a>
+                    <a href="#" id="open_preferences_center" className="p-2" title="Cookie Consent">
+                        <FaCookie />
+                        <span className="sr-only">Cookie Consent</span>
+                    </a>
                 </div>
             </div>
         </footer>
