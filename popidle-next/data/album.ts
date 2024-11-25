@@ -20,11 +20,9 @@ const getGamePeriod = () => {
     }
 }
 
-// const filteredResponseQueryOptions = {
-//     next: { revalidate: Number(process.env.REVALIDATE_CACHE_SECONDS) }
-// }
-
-const filteredResponseQueryOptions = {};
+const filteredResponseQueryOptions = {
+    next: { revalidate: 86400 }
+}
 
 export async function getCurrentAlbum() {
     const currentPuzzleDate = currentPuzzleId();
