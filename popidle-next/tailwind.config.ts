@@ -12,6 +12,7 @@ const config: Config = {
       colors: {
         'popidle-banner-bg': gameConfig.colourBannerBackground,
         'popidle-banner-text': gameConfig.colourBannerForeground,
+        'popidle-banner-fg': gameConfig.colourBannerForeground,
         'popidle-info-bg': '#1DD6FA',
         'popidle-info-fg': '#000',
         'popidle-success-bg': '#48c78e',
