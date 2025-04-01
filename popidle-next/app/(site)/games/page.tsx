@@ -41,7 +41,7 @@ export default function GamesPage() {
         <>
         <Header title={'Friends\' games'} subtitle="Play more daily games" />
         <main className="grow">
-          <div className="max-w-md p-4 mx-auto md:max-w-screen-lg md:px-8">
+          <div className="max-w-md p-4 mx-auto md:max-w-screen-lg">
             <div className="grid grid-cols md:grid-cols-3 gap-2 md:gap-4">
             {
                 friends.filter((friend: Friend) => friend.title !== process.env.GAME_TITLE)

@@ -17,7 +17,7 @@ body {
 }
 
 .navbar-container {
-    @apply container mx-auto max-w-5xl flex items-center justify-between p-4 px-8;
+    @apply container mx-auto max-w-5xl flex items-center justify-between p-4;
 }
 
 .navbar-brand {
@@ -39,7 +39,7 @@ body {
 }
 
 .header-container {
-    @apply container mx-auto max-w-5xl px-8 py-8 space-y-3;
+    @apply container mx-auto max-w-5xl px-4 py-8 space-y-3;
 }
 
 .header-title {
@@ -57,7 +57,7 @@ body {
 }
 
 .footer-container {
-    @apply container mx-auto max-w-screen-lg flex flex-col-reverse md:flex-row md:items-center md:justify-between p-6 px-8 space-y-4 md:space-y-0;
+    @apply container mx-auto max-w-screen-lg flex flex-col-reverse md:flex-row md:items-center md:justify-between p-6 px-4 space-y-4 md:space-y-0;
 }
 
 .footer-flex {
