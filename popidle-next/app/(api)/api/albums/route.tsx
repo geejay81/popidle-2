@@ -5,11 +5,14 @@ export async function GET(request: Request) {
 
     const albums = await getAllAlbums();
 
-    const autocompleteOptions = albums.map((album: any) => (
-        {
-            id: `${album._id}`,
-            value: `${album.albumTitle} - ${album.artist}`
-        }
-    ));
-    return NextResponse.json({ albums: autocompleteOptions })
+    const autocompleteOptions = Array.from(
+        new Map(
+            albums.map((album: any) => [album._id, {
+                id: album._id,
+                value: `${album.albumTitle} - ${album.artist}`
+            }])
+        ).values()
+    );
+
+    return NextResponse.json({ albums: autocompleteOptions });
 }

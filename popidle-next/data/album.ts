@@ -10,13 +10,13 @@ const currentPuzzleId = () => {
     return Math.floor((today.getTime() - startDate.getTime()) / _MS_PER_DAY) + 1;
 }
 
-const getGamePeriod = () => {
+const getGameAppearanceType = () => {
     switch (gameConfig.gameIdentifier) {
-        case "1970s": return [1970,1979];
-        case "1980s": return [1980,1989];
-        case "1990s": return [1990,1999];
-        case "2000s": return [2000,2009];
-        default: return [1900,2050];
+        case "1970s": return "70s";
+        case "1980s": return "80s";
+        case "1990s": return "90s";
+        case "2000s": return "00s";
+        default: return "original";
     }
 }
 
@@ -58,18 +58,27 @@ export async function getHistoricAlbums() {
 
 export async function getAllAlbums() {
 
-    const [gameStartYear, gameEndYear] = getGamePeriod();
-
     return createClient(clientConfig).fetch(
-        groq`*[_type == "album" && defined(${gameConfig.gameDatabaseRecordId}) && year >= ${gameStartYear} && year <= ${gameEndYear}]{
+        groq`*[_type == "album" && defined(gameAppearances[])]
+            {
             _id,
             artist,
             albumTitle,
-            "gameId": ${gameConfig.gameDatabaseRecordId},
             year,
             embedKey,
-            "coverArt": coverArt.asset->url
-        } | order(albumTitle)`,
+            coverArt,
+            gameAppearances[]{
+                "_id": ^._id,
+                "artist": ^.artist,
+                "albumTitle": ^.albumTitle,
+                "gameId": gameNumber,
+                "year": ^.year,
+                "embedKey": ^.embedKey,
+                "coverArt": ^.coverArt.asset->url,
+                gameType
+            }
+            }.gameAppearances[gameType == "${getGameAppearanceType()}"]
+            | order(albumTitle, gameId)`,
         {},
         filteredResponseQueryOptions
     );
