@@ -13,7 +13,7 @@ export default function FooterBanner() {
         className=""
       >
         <Image
-          src="/promos/amazon/UK06_PBDD25_LU_468x60.png"
+          src="/promos/amazon/UK06_PBDD25_DO_468x60.png"
           alt="Amazon Banner Ad"
           width={460}
           height={60}
