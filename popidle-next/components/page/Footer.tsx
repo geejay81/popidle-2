@@ -26,7 +26,7 @@ const footerLinks = [
 
 export default function Footer() {
     return (
-        <footer className="footer-section pb-12">
+        <footer className="footer-section">
             <div className="footer-container">
                 <div className="footer-flex">
                     {footerLinks.map((link,index) => (

@@ -6,6 +6,9 @@ import Footer from "@/components/page/Footer";
 import ConsentManagementPlatform from "@/components/client-apps/ConsentManagementPlatform";
 import Script from "next/script";
 import FooterBanner from "@/components/page/FooterBanner";
+import PopunderScript from "@/components/ads/PopunderScript";
+import InPagePushScript from "@/components/ads/InPagePush";
+import HillTopBannerScript from "@/components/ads/HillTopBanner";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -39,7 +42,6 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
-        <FooterBanner />
         <Script src="/scripts/clarity.js" id="clarity-script" data-project-id={process.env.CLARITY_PROJECT_ID} strategy="afterInteractive"></Script>
         <ConsentManagementPlatform GA_MEASUREMENT_ID={process.env.GTAG || ''} />
       </body>
