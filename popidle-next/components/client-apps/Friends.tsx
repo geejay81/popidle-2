@@ -9,11 +9,6 @@ export default function Friends({gameTitle}: {gameTitle: string}) {
             <h2 className={`text-2xl font-bold ${headingFont.className}`}>More music fun...</h2>
             <ul className="w-full rounded-lg mt-2 mb-3 text-blue-800">
                 <li className="mb-1 space-y-4">
-                    <a href="https://bandle.app" 
-                        className="w-fill flex p-3 pl-3 bg-white text-red-900 hover:bg-gray-200 focus:bg-gray-200  rounded-lg">
-                        <FaMusic className="flex-none w-6 h-full" />
-                        <span className="ml-2 truncate">Bandle</span>
-                    </a>
                     <a href="https://popidle.the-sound.co.uk" 
                         className="w-fill flex p-3 pl-3 bg-popidle-warning-bg text-popidle-warning-fg hover:bg-gray-200 focus:bg-gray-200  rounded-lg">
                         <FaRecordVinyl className="flex-none w-6 h-full" />

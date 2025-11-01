@@ -120,7 +120,7 @@ ${url}`;
 
     const PlayMode = () => {
         return (
-            <div className='flex flex-col md:flex-row md:justify-between md:gap-4 px-8'>
+            <div className='flex flex-col md:flex-row md:justify-between md:gap-4 px-4'>
                 <div className='md:flex-1 py-4 text-center'>
                     <PixelatedImage imageUrl={album.coverArt} pixelSize={pixelSize} height={300} width={300} />
                 </div>
@@ -154,7 +154,7 @@ ${url}`;
 
     const WonMode = () => {
         return (
-            <div className='flex flex-col md:flex-row md:justify-between md:gap-4 px-8'>
+            <div className='flex flex-col md:flex-row md:justify-between md:gap-4 px-4'>
                 <div className='md:flex-1 py-4 space-y-4'>
                     <SpotifyWidget albumId={album.embedKey} />
                     <div className='p-6 rounded-lg bg-popidle-success-bg text-popidle-success-fg space-y-4'>
@@ -176,7 +176,7 @@ ${url}`;
 
     const LostMode = () => {
         return (
-            <div className='flex flex-col md:flex-row md:justify-between md:gap-4 px-8'>
+            <div className='flex flex-col md:flex-row md:justify-between md:gap-4 px-4'>
                 <div className='md:flex-1 py-4 space-y-4'>
                     <SpotifyWidget albumId={album.embedKey} />
                     <div className='p-6 bg-popidle-danger-bg rounded-lg text-popidle-danger-fg space-y-4'>
@@ -197,7 +197,7 @@ ${url}`;
     }
 
     const LoadingMode = () => (
-        <div className='flex flex-col md:flex-row md:justify-between md:gap-4 px-8'>
+        <div className='flex flex-col md:flex-row md:justify-between md:gap-4 px-4'>
             <div className='md:flex-1 py-4 space-y-4'>
                 <p>Loading ...</p>
             </div>

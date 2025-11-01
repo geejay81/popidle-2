@@ -36,7 +36,7 @@ export default function Footer() {
                 <div className="footer-flex">
                     {footerLinks.map((link,index) => (
                         <Link key={index} href={link.url} title={link.title} className="p-2"
-                            prefetch={false}>
+                            prefetch={false} target="_blank" rel="noopener noreferrer">
                             {link.icon}<span className="sr-only">Visit PopIdle on {link.title}</span>
                         </Link>
                     ))}
