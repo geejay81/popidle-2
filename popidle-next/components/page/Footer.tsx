@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaBluesky, FaXTwitter, FaInstagram, FaSpotify, FaCookie } from "react-icons/fa6";
+import { FaBluesky, FaXTwitter, FaInstagram, FaSpotify, FaCookie, FaReddit } from "react-icons/fa6";
 
 const footerLinks = [
     {
@@ -11,6 +11,11 @@ const footerLinks = [
         "title": "BlueSky",
         "url": "https://bsky.app/profile/popidle.app",
         "icon": <FaBluesky />
+    },
+    {
+        "title": "Reddit",
+        "url": "https://reddit.com/u/PopIdleAlbums/",
+        "icon": <FaReddit />
     },
     {
         "title": "Instagram",
