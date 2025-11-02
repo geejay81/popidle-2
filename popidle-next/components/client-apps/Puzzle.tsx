@@ -14,6 +14,7 @@ import { State } from '@/types/State';
 import GameHistory from './GameHistory';
 import { createShareablePuzzzleBoard, shareContent } from '../client-lib/SocialSharer';
 import Friends from './Friends';
+import PreviousAnswers from './PreviousAnswers';
 
 type Props = {
     gameType: string,
@@ -136,17 +137,7 @@ ${url}`;
                     <div>
                         <ScoreBoard guesses={guesses} />
                     </div>
-                    <div className='prose'>
-                        <ol className='list-decimal list-inside'>
-                            {guesses.map((g, index) => {
-                                return (
-                                    <li key={index} className='py-2 border-b border-slate-100'>
-                                        {`${g.result == 'skipped' ? '<skipped>' : g.answer}`}
-                                    </li>
-                                );
-                            })}
-                        </ol>
-                    </div>
+                    <PreviousAnswers guesses={guesses} />
                 </div>
             </div>
         );
@@ -165,6 +156,7 @@ ${url}`;
                             className={`bg-popidle-success-fg text-xl !text-popidle-success-bg p-4 rounded-md w-full ${headings.className}`}
                             type="button" onClick={handleShare}>Share</button>
                     </div>
+                    <PreviousAnswers guesses={guesses} />
                 </div>
                 <div className='md:flex-1 py-4 space-y-4'>
                     {gameType === 'daily' && <GameHistory />}
@@ -187,6 +179,7 @@ ${url}`;
                             className={`bg-popidle-danger-fg text-xl !text-popidle-danger-bg p-4 rounded-md w-full ${headings.className}`}
                             type="button" onClick={handleShare}>Share</button>
                     </div>
+                    <PreviousAnswers guesses={guesses} />
                 </div>
                 <div className='md:flex-1 py-4 space-y-4'>
                     {gameMode === 'daily' && <GameHistory />}
