@@ -1,7 +1,12 @@
 import Link from "next/link";
-import { FaBluesky, FaXTwitter, FaInstagram, FaSpotify, FaCookie, FaReddit } from "react-icons/fa6";
+import { FaBluesky, FaXTwitter, FaInstagram, FaSpotify, FaCookie, FaReddit, FaFacebook } from "react-icons/fa6";
 
 const footerLinks = [
+    {
+        "title": "Facebook",
+        "url": "https://www.facebook.com/popidlegame",
+        "icon": <FaFacebook />
+    },
     {
         "title": "X",
         "url": "https://x.com/popidlegame",

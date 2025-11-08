@@ -61,7 +61,7 @@ body {
 }
 
 .footer-flex {
-    @apply inline-flex flex-row items-center space-x-4;
+    @apply inline-flex flex-row items-center space-x-3;
 }
 
 .previous-answers {
